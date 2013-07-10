@@ -1,0 +1,46 @@
+# <http://localhost/id/Ebolavirus> <http://www.w3.org/2000/01/rdf-schema#label> "Ebola Virus"@en.
+
+# Black death
+# Polio
+# Smallpox
+# Cholera
+# Ebola
+# Malaria
+# Bubonic Plague
+# Spanish Flu
+# Influenza
+# Aids
+# Necrotizing Fasciitis
+
+<http://localhost/id/Ebolavirus> <http://www.w3.org/2000/01/rdf-schema#label> "Ebola Virus"@en.
+<http://localhost/id/Ebolavirus> <http://purl.org/dc/elements/1.1/description> "A description of Ebola Virus"@en.
+
+<http://localhost/id/Polio> <http://www.w3.org/2000/01/rdf-schema#label> "Polio"@en.
+<http://localhost/id/Polio> <http://purl.org/dc/elements/1.1/description> "A description of Polio"@en.
+
+<http://localhost/id/Smallpox> <http://www.w3.org/2000/01/rdf-schema#label> "Smallpox"@en.
+<http://localhost/id/Smallpox> <http://purl.org/dc/elements/1.1/description> "A description of Smallpox"@en.
+
+<http://localhost/id/Cholera> <http://www.w3.org/2000/01/rdf-schema#label> "Cholera"@en.
+<http://localhost/id/Cholera> <http://purl.org/dc/elements/1.1/description> "A description of Cholera"@en.
+
+<http://localhost/id/Ebolavirus> <http://www.w3.org/2000/01/rdf-schema#label> "Ebola Virus"@en.
+<http://localhost/id/Ebolavirus> <http://purl.org/dc/elements/1.1/description> "A description of Ebola Virus"@en.
+
+<http://localhost/id/Malaria> <http://www.w3.org/2000/01/rdf-schema#label> "Malaria"@en.
+<http://localhost/id/Malaria> <http://purl.org/dc/elements/1.1/description> "A description of Malaria"@en.
+
+<http://localhost/id/BubonicPlague> <http://www.w3.org/2000/01/rdf-schema#label> "Bubonic Plague"@en.
+<http://localhost/id/BubonicPlague> <http://purl.org/dc/elements/1.1/description> "A description of Bubonic Plague"@en.
+
+<http://localhost/id/SpanishFlu> <http://www.w3.org/2000/01/rdf-schema#label> "Spanish Flu"@en.
+<http://localhost/id/SpanishFlu> <http://purl.org/dc/elements/1.1/description> "A description of Spanish Flu"@en.
+
+<http://localhost/id/Influenza> <http://www.w3.org/2000/01/rdf-schema#label> "Influenza"@en.
+<http://localhost/id/Influenza> <http://purl.org/dc/elements/1.1/description> "A description of Influenza"@en.
+
+<http://localhost/id/Aids> <http://www.w3.org/2000/01/rdf-schema#label> "Aids"@en.
+<http://localhost/id/Aids> <http://purl.org/dc/elements/1.1/description> "A description of Aids"@en.
+
+<http://localhost/id/NecrotizingFascitis> <http://www.w3.org/2000/01/rdf-schema#label> "Necrotizing Fasciitis"@en.
+<http://localhost/id/NecrotizingFascitis> <http://purl.org/dc/elements/1.1/description> "A description of Necrotizing Fasciitis"@en.
