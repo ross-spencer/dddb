@@ -4,7 +4,7 @@
 
 	include_once($root.'/dddb/private/app/php/classes/sparqllib/sparqllib.php');
 
-	$endpoint = 'http://127.0.0.1/public/sparql/endpoint.php';
+	$endpoint = 'http://127.0.0.1/dddb/public/sparql/endpoint.php';
 	$db = sparql_connect( $endpoint );
 
 	if(!$db) 
