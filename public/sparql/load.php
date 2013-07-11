@@ -13,7 +13,7 @@
 		'db_pwd' => 'root',
 
 		/* store name */
-		'store_name' => 'arc_tests',
+		'store_name' => 'dddb_db',
 
 		/* stop after 100 errors */
 		'max_errors' => 100,
@@ -22,10 +22,10 @@
 	/* instantiation */
 	$ep = ARC2::getStore($config);
 	if (!$ep->isSetUp()) {
-	$ep->setUp(); /* create MySQL tables */
+		$ep->setUp(); /* create MySQL tables */
 	}
 
 	$ep->reset();
-	$ep->query('LOAD <http://127.0.0.1/public/sparql/disease-triples.nt>');
+	$ep->query('LOAD <http://127.0.0.1/dddb/public/sparql/disease-triples.nt>');
 
 ?>
