@@ -59,6 +59,8 @@ class sparql_connection
 	
 	var $offset = null;
 	var $limit = null;
+	
+	var $outputfmt = null;
 
 	function __construct( $endpoint )
 	{
@@ -97,6 +99,11 @@ class sparql_connection
 	function limit( $limit )
 	{
 		$this->limit = $limit;
+	}
+
+	function outputfmt( $outputfmt )
+	{
+		$this->outputfmt = $outputfmt;
 	}
 
 	function errno() { return $this->errno; }
@@ -158,6 +165,16 @@ class sparql_connection
 		return true;
 	}
 
+	function encode_query($query)
+	{
+		$url = $this->endpoint."?query=".urlencode( $this->construct_query($query) );
+		if ($this->outputfmt != null)
+		{
+			$url = $url."&output=".urlencode($this->outputfmt);
+		}
+		return $url;
+	}
+
 	//RS: 	query_all() Function to query the entire triple store. Use with care!
 	//Args: 	$query: sparql query
 	//		  	$limit: sparql query limit
@@ -180,7 +197,7 @@ class sparql_connection
 		while($bData === true)
 		{
 			//create a new url with new offset parameters...
-			$url = $this->endpoint."?query=".urlencode( $this->construct_query($query) );
+			$url = $this->encode_query($query);
 
 			// Retrieve CURL session handle...
 			$ch = $this->setCURLParameters($url);
@@ -228,7 +245,8 @@ class sparql_connection
 		$this->errno = null;
 		$this->error = null;
 		
-		$url = $this->endpoint."?query=".urlencode( $this->construct_query($query) );
+			//create a new url with new offset parameters...
+			$url = $this->encode_query($query);
 
 		// Retrieve CURL session handle...
 		$ch = $this->setCURLParameters($url);
