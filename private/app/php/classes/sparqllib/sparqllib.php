@@ -223,7 +223,7 @@ class sparql_connection
 		return new sparql_result( $this, $all_rows, $parser->fields );
 	}
 
-	function query( $query )
+	function query( $query, $plain=False )
 	{	
 		$this->errno = null;
 		$this->error = null;
@@ -240,9 +240,13 @@ class sparql_connection
 		// Close CURL session...
 		curl_close($ch);
 
-		// Handle CURL output here...
-		$parser = new xx_xml($output, 'contents');
-		return new sparql_result( $this, $parser->rows, $parser->fields );
+		if(!$plain)			# continue using SPARQLLIB parsing functions
+		{
+			// Handle CURL output here...
+			$parser = new xx_xml($output, 'contents');
+			return new sparql_result( $this, $parser->rows, $parser->fields );
+		}
+		else { return $output; }	# return content as formatted by endpoint
 	}
 }
 
