@@ -1,5 +1,8 @@
 <?php 
 
+	header("content-type: text/plain");
+	#header("content-type: application/xml");
+
 	$root = $_SERVER['DOCUMENT_ROOT'];
 
 	include_once($root.'/dddb/private/app/php/classes/sparqllib/sparqllib.php');
@@ -14,27 +17,15 @@
 	}
 
 	#$dddb_query = "select * where { ?s ?p ?o . }";
-	$dddb_query = "ask where { <http://localhost/id/Ebolavirus> ?p ?o . }";
-
-	$dddb_array = $db->query($dddb_query);
-
-	var_dump($dddb_array);
-	
-	print "ggg";
-	
-	$fields = $dddb_array->field_array( $dddb_array );
-	
-	var_dump($fields);
-	
-	
-	while( $row = $dddb_array->fetch_array( $dddb_array ) )
-	{
-		foreach ( $fields as $field )
-		{
-			print $row[$field];
-		}
-	}
-	
+	#$fields = $dddb_array->field_array( $dddb_array );
+	#var_dump($fields);
+	#while( $row = $dddb_array->fetch_array( $dddb_array ) )
+	#{
+	#	foreach ( $fields as $field )
+	#	{
+	#		print $row[$field];
+	#	}
+	#}
 	
 	#		foreach( $fields as $field )
 	#		{
@@ -55,21 +46,35 @@
 
 	$parts = get_slug('/', $_SERVER['REQUEST_URI']);		# Stick REQUEST_URI into init() for class?
 	
-	print $_SERVER['REQUEST_URI'];
+	#print $_SERVER['REQUEST_URI'];
 	
 	if(sizeof($parts) == 2)
 	{
 		if (strtolower($parts[0]) == 'doc')
 		{
-			# attempt to find in endpoint
+			$subject_uri = "<http://localhost/id/".$parts[1].">";
 			
+			$dddb_query = "ask where { ".$subject_uri." ?p ?o . }";
+			$db->outputfmt("plain");
+			$dddb_ask = $db->query($dddb_query, True);
+			
+			if($dddb_ask == 'true')
+			{
+				$dddb_query = "describe ".$subject_uri;
+				$db->outputfmt("xml");
+				$dddb_ask = $db->query($dddb_query, True);
+				print $dddb_ask;
+			}
+			else
+			{
+				print "return a 404";   # or xslt an empty xmlrdf document
+			}
 		}
 	}
 	else
 	{
-		print "hhh";
+		print "return something else";
 	}
-
 
 	//print "here";
 
