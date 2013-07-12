@@ -1,11 +1,14 @@
 <?php 
 
-	header("content-type: text/plain");
+	#header("content-type: text/plain");
 	#header("content-type: application/xml");
 
 	$root = $_SERVER['DOCUMENT_ROOT'];
 
 	include_once($root.'/dddb/private/app/php/classes/sparqllib/sparqllib.php');
+
+	define("PVT", $root.'/dddb/private/');
+	define("PUBLIC", $root.'/dddb/public/');
 
 	$endpoint = 'http://127.0.0.1/dddb/public/sparql/endpoint.php';
 	$db = sparql_connect( $endpoint );
@@ -62,8 +65,22 @@
 			{
 				$dddb_query = "describe ".$subject_uri;
 				$db->outputfmt("xml");
-				$dddb_ask = $db->query($dddb_query, True);
-				print $dddb_ask;
+				$dddb_describe = $db->query($dddb_query, True);
+				#print $dddb_describe;
+				
+
+				
+				$xsl_filename = PVT.'/app/xsl/dddb-rdf-generic.xsl';
+
+				
+				$doc = new DOMDocument();
+				$xsl = new XSLTProcessor();
+
+				$doc->load($xsl_filename);
+				$xsl->importStyleSheet($doc);
+
+				$doc->loadXML($dddb_describe);
+				echo $xsl->transformToXML($doc);
 			}
 			else
 			{
