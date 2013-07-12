@@ -8,7 +8,7 @@
 	include_once($root.'/dddb/private/app/php/classes/sparqllib/sparqllib.php');
 
 	define("PVT", $root.'/dddb/private/');
-	define("PUBLIC", $root.'/dddb/public/');
+	define("PUB", $root.'/dddb/public/');
 
 	$endpoint = 'http://127.0.0.1/dddb/public/sparql/endpoint.php';
 	$db = sparql_connect( $endpoint );
